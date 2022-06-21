@@ -89,10 +89,22 @@ function App() {
     </div>
   );
 }
-
-const SquareComponent = ({ square }) => {
-  const newSquare = showCaps(square);
-  return <div className="Wordle-square">{newSquare}</div>;
+//Function
+//Grid
+const WordleGrid = ({ wordleGuessList }) => {
+  return (
+    <div className="Wordle-column">
+      {wordleGuessList.map((row, index) => {
+        return (
+          <RowComponent
+            key={`row-component-${row}-${index}`}
+            rowIndex={row}
+            row={row}
+          ></RowComponent>
+        );
+      })}
+    </div>
+  );
 };
 
 const RowComponent = ({ rowIndex, row }) => {
@@ -110,16 +122,24 @@ const RowComponent = ({ rowIndex, row }) => {
   );
 };
 
-const WordleGrid = ({ wordleGuessList }) => {
+const SquareComponent = ({ square }) => {
+  const newSquare = showCaps(square);
+  return <div className="Wordle-square">{newSquare}</div>;
+};
+
+
+//key
+
+const WordleKeyboard = ({ handleKeyEvent }) => {
   return (
-    <div className="Wordle-column">
-      {wordleGuessList.map((row, index) => {
+    <div className="Keyboard-grid">
+      {keyBoardArr.map((row, index) => {
         return (
-          <RowComponent
-            key={`row-component-${row}-${index}`}
-            rowIndex={row}
-            row={row}
-          ></RowComponent>
+          <KeyRowComponent
+            key={row}
+            keyRow={row}
+            handleKeyEvent={handleKeyEvent}
+          ></KeyRowComponent>
         );
       })}
     </div>
@@ -157,23 +177,7 @@ const KeyRowComponent = ({ keyRow, handleKeyEvent }) => {
     </div>
   );
 };
-
-const WordleKeyboard = ({ handleKeyEvent }) => {
-  return (
-    <div className="Keyboard-grid">
-      {keyBoardArr.map((row, index) => {
-        return (
-          <KeyRowComponent
-            key={row}
-            keyRow={row}
-            handleKeyEvent={handleKeyEvent}
-          ></KeyRowComponent>
-        );
-      })}
-    </div>
-  );
-};
-
+//Event handle
 const setIndexForDelete = (newGuess, colCoord) => {
   if (colCoord === 0) {
     return colCoord;
