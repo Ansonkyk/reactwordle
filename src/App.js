@@ -1,3 +1,4 @@
+//Import
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { answerList, wordList } from "./wordleWords.js";
@@ -9,19 +10,13 @@ const defaultGuessList = [
   ["", "", "", "", ""],
   ["", "", "", "", ""],
 ];
-
+//Keyboard
 const keysRow1 = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
 const keysRow2 = ["a", "s", "d", "f", "g", "h", "j", "k", "l"];
 const keysRow3 = ["Delete", "z", "x", "c", "v", "b", "n", "m", "Enter"];
 const keyBoardArr = [keysRow1, keysRow2, keysRow3];
 const allKeys = [...keysRow1, ...keysRow2, ...keysRow3, "Backspace"];
-// const statusObject = {
-//   blank: "#333333",
-//   incorrect: "gray",
-//   wrongSpot: "yellow",
-//   correct: "green",
-// };
-
+//Main
 function App() {
   const [wordleGuessList, setWordleGuessList] = useState(
     JSON.parse(JSON.stringify(defaultGuessList))
@@ -64,6 +59,7 @@ function App() {
     const newColCoord = setIndexForDelete(newGuess, colCoord);
 
     if (newColCoord === 5) {
+      alert("Too bad you loose!");
       return;
     }
 

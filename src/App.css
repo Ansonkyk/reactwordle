@@ -45,6 +45,8 @@
   border-radius: 20%;
   border: medium solid grey;
   margin: 5px;
+  justify-content: center;
+  align-items: center;
 }
 
 .Wordle-row {
@@ -67,6 +69,7 @@
   height: 35px;
   justify-content: center;
   align-items: center;
+  
 }
 
 .Keyboard-row {
